@@ -20,7 +20,6 @@ import (
 	"runtime"
 	"strings"
 	"testing"
-	"time"
 
 	"github.com/hashicorp/terraform-exec/tfexec"
 )
@@ -149,7 +148,7 @@ func (suite *E2ETestSuite) createProviderOverride(t *testing.T) error {
 	goarch := runtime.GOARCH
 	
 	// Create the provider directory structure
-	providerDir := filepath.Join(mirrorDir, "aztfmod.com", "test", "azurecaf", "1.0.0", fmt.Sprintf("%s_%s", goos, goarch))
+	providerDir := filepath.Join(mirrorDir, "aztfmodnew.com", "test", "azurecaf", "1.0.0", fmt.Sprintf("%s_%s", goos, goarch))
 	if err := os.MkdirAll(providerDir, 0750); err != nil {
 		return fmt.Errorf("failed to create provider directory: %w", err)
 	}
@@ -169,10 +168,10 @@ func (suite *E2ETestSuite) createProviderOverride(t *testing.T) error {
 	overrideConfig := fmt.Sprintf(`provider_installation {
   filesystem_mirror {
     path    = "%s"
-    include = ["aztfmod.com/test/*"]
+    include = ["aztfmodnew.com/test/*"]
   }
   direct {
-    exclude = ["aztfmod.com/test/*"]
+    exclude = ["aztfmodnew.com/test/*"]
   }
 }`, mirrorDir)
 

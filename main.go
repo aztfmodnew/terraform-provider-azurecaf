@@ -13,7 +13,7 @@
 package main
 
 import (
-	"github.com/aztfmod/terraform-provider-azurecaf/azurecaf"
+	"github.com/aztfmodnew/terraform-provider-azurecaf/azurecaf"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
 )

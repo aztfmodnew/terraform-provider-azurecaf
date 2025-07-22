@@ -68,7 +68,7 @@ func TestResourceTypesFromBothFiles(t *testing.T) {
 		{"Resource Group", "azurerm_resource_group", "rg", true, false},
 		{"AKS Cluster", "azurerm_kubernetes_cluster", "aks", true, false},
 		{"Container App", "azurerm_container_app", "ca", true, false},
-		{"Private Endpoint", "azurerm_private_endpoint", "pe", true, true},
+		{"Private Endpoint", "azurerm_private_endpoint", "pep", true, true},
 		{"Private Service Connection", "azurerm_private_service_connection", "psc", true, true},
 	}
 

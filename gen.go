@@ -155,9 +155,13 @@ func main() {
 
 	// Build a mapping of CAF prefixes (slugs) to resource types
 	// This allows reverse lookup from slug to resource type name
+	// Priority handling: azurerm_storage_account gets priority for "st" slug
 	slugMap := make(map[string]string)
 	for _, res := range uniqueData {
 		if _, exists := slugMap[res.CafPrefix]; !exists {
+			slugMap[res.CafPrefix] = res.ResourceTypeName
+		} else if res.CafPrefix == "st" && res.ResourceTypeName == "azurerm_storage_account" {
+			// Prioritize azurerm_storage_account for the "st" slug
 			slugMap[res.CafPrefix] = res.ResourceTypeName
 		}
 	}

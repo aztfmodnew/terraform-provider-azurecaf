@@ -30,7 +30,7 @@ The Azure CAF Terraform Provider is designed to support the Microsoft Cloud Adop
 - **Naming Convention Enforcement**: Ensures Azure resource names follow CAF guidelines
 - **Resource Validation**: Validates names against Azure-specific constraints
 - **Flexibility**: Supports multiple naming patterns and customization options
-- **Comprehensive Coverage**: Supports 300+ Azure resource types
+- **Comprehensive Coverage**: Supports 631 Azure resource types
 
 ### Architecture
 
@@ -76,7 +76,7 @@ Contributing new Azure resource types is one of the most valuable ways to help t
 ### Step 1: Verify the Resource Isn't Already Implemented
 
 1. **Check the Resource Status**: Look at the [resource status table](../README.md#-resource-status) in the README
-2. **Search Issues**: Check if there's already an [open issue](https://github.com/aztfmod/terraform-provider-azurecaf/issues) for this resource
+2. **Search Issues**: Check if there's already an [open issue](https://github.com/aztfmodnew/terraform-provider-azurecaf/issues) for this resource
 3. **Review Recent PRs**: Make sure someone isn't already working on it
 
 ### Step 2: Research Resource Requirements
@@ -89,7 +89,7 @@ Before implementing, gather these details:
 
 ### Step 3: Create an Issue
 
-[Create a new issue](https://github.com/aztfmod/terraform-provider-azurecaf/issues/new) with:
+[Create a new issue](https://github.com/aztfmodnew/terraform-provider-azurecaf/issues/new) with:
 
 - **Resource Type**: Full Terraform resource name (e.g., `azurerm_synapse_workspace`)
 - **Proposed Slug**: CAF abbreviation (e.g., `syws`)
@@ -216,7 +216,7 @@ Add your resource definition to the JSON file:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/aztfmod/terraform-provider-azurecaf.git
+   git clone https://github.com/aztfmodnew/terraform-provider-azurecaf.git
    cd terraform-provider-azurecaf
    ```
 

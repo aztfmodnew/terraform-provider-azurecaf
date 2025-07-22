@@ -1,6 +1,6 @@
 # Azure CAF Terraform Provider
 
-[![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)](https://registry.terraform.io/providers/aztfmod/azurecaf/latest)
+[![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)](https://registry.terraform.io/providers/aztfmodnew/azurecaf/latest)
 [![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)](https://golang.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
@@ -18,7 +18,7 @@ The Azure CAF (Cloud Adoption Framework) provider is a *logical provider* that o
 - **🏷️ Handle prefixes and suffixes** (manual or CAF-compliant)
 - **✅ Validate existing names** using passthrough mode
 - **🔄 Support multiple naming conventions** (CAF Classic, CAF Random, Random, Passthrough)
-- **📋 Support 300+ Azure resource types** with accurate validation rules
+- **📋 Support 631 Azure resource types** with accurate validation rules
 
 ## Quick Start
 
@@ -30,7 +30,7 @@ Add the provider to your Terraform configuration:
 terraform {
   required_providers {
     azurecaf = {
-      source  = "aztfmod/azurecaf"
+      source  = "aztfmodnew/azurecaf"
       version = "~> 1.2.28"
     }
   }
@@ -96,7 +96,7 @@ data "azurecaf_name" "new" {
 
 ## Supported Azure Resource Types
 
-The provider supports **300+ Azure resource types** with accurate naming validation rules. Each resource type has specific constraints for:
+The provider supports **631 Azure resource types** with accurate naming validation rules. Each resource type has specific constraints for:
 
 - **Length requirements** (minimum and maximum)
 - **Character restrictions** (allowed patterns)
@@ -408,18 +408,18 @@ output "resource_names" {
 
 ## Contributing
 
-We welcome contributions! Please see our [Contributing Guidelines](https://github.com/aztfmod/terraform-provider-azurecaf/blob/main/CONTRIBUTING.md) for details.
+We welcome contributions! Please see our [Contributing Guidelines](https://github.com/aztfmodnew/terraform-provider-azurecaf/blob/main/CONTRIBUTING.md) for details.
 
 ## Support
 
-- **Documentation**: [Terraform Registry](https://registry.terraform.io/providers/aztfmod/azurecaf/latest/docs)
-- **Issues**: [GitHub Issues](https://github.com/aztfmod/terraform-provider-azurecaf/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/aztfmod/terraform-provider-azurecaf/discussions)
+- **Documentation**: [Terraform Registry](https://registry.terraform.io/providers/aztfmodnew/azurecaf/latest/docs)
+- **Issues**: [GitHub Issues](https://github.com/aztfmodnew/terraform-provider-azurecaf/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/aztfmodnew/terraform-provider-azurecaf/discussions)
 
 ## Related Projects
 
 | Project | Description |
 |---------|-------------|
 | [CAF Landing Zones](https://github.com/azure/caf-terraform-landingzones) | Azure landing zones implementation |
-| [CAF Modules](https://registry.terraform.io/modules/aztfmod) | Official CAF modules |
-| [Rover](https://github.com/aztfmod/rover) | DevOps toolset for landing zones |
+| [CAF Modules](https://registry.terraform.io/modules/aztfmodnew) | Official CAF modules |
+| [Rover](https://github.com/aztfmodnew/rover) | DevOps toolset for landing zones |

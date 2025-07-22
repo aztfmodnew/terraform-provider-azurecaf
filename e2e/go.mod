@@ -1,4 +1,4 @@
-module github.com/aztfmod/terraform-provider-azurecaf/e2e
+module github.com/aztfmodnew/terraform-provider-azurecaf/e2e
 
 go 1.24.4
 

@@ -82,7 +82,7 @@ test: ## Run terraform examples with local provider
 	@echo '#!/bin/bash' > run_examples.sh
 	@echo 'GOOS=$$(go env GOOS)' >> run_examples.sh
 	@echo 'GOARCH=$$(go env GOARCH)' >> run_examples.sh
-	@echo 'LOCAL_PLUGIN_DIR=~/.terraform.d/plugins/aztfmod.com/arnaudlh/azurecaf/1.0.0/$${GOOS}_$${GOARCH}' >> run_examples.sh
+	@echo 'LOCAL_PLUGIN_DIR=~/.terraform.d/plugins/aztfmodnew.com/arnaudlh/azurecaf/1.0.0/$${GOOS}_$${GOARCH}' >> run_examples.sh
 	@echo 'echo "Using local plugin directory: $$LOCAL_PLUGIN_DIR"' >> run_examples.sh
 	@echo 'mkdir -p $$LOCAL_PLUGIN_DIR' >> run_examples.sh
 	@echo 'cp ./terraform-provider-azurecaf $$LOCAL_PLUGIN_DIR/' >> run_examples.sh
@@ -91,7 +91,7 @@ test: ## Run terraform examples with local provider
 	@echo 'cat > examples/terraform.rc << EOF' >> run_examples.sh
 	@echo 'provider_installation {' >> run_examples.sh
 	@echo '  dev_overrides {' >> run_examples.sh
-	@echo '    "aztfmod.com/arnaudlh/azurecaf" = "$${HOME}/.terraform.d/plugins/aztfmod.com/arnaudlh/azurecaf/1.0.0/$${GOOS}_$${GOARCH}"' >> run_examples.sh
+	@echo '    "aztfmodnew.com/arnaudlh/azurecaf" = "$${HOME}/.terraform.d/plugins/aztfmodnew.com/arnaudlh/azurecaf/1.0.0/$${GOOS}_$${GOARCH}"' >> run_examples.sh
 	@echo '  }' >> run_examples.sh
 	@echo '  direct {}' >> run_examples.sh
 	@echo '}' >> run_examples.sh

@@ -1,4 +1,4 @@
-name: Go
+name: Go Build and Test
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
   pull_request:
     branches: [main]
   repository_dispatch:
+  workflow_dispatch:  # Allow manual triggering
 
 # Restrict permissions for all jobs by default
 permissions:
@@ -15,13 +16,13 @@ permissions:
 
 jobs:
   build:
-    name: Build
+    name: Build and Test
     runs-on: ubuntu-latest
     permissions:
       contents: write  # Required for creating releases
       id-token: write  # Required for keyless signing
     steps:
-      - name: Check out code into the Go module directory
+      - name: Check out code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0

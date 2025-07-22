@@ -33,7 +33,7 @@ func TestE2EBasic(t *testing.T) {
 terraform {
   required_providers {
     azurecaf = {
-      source = "registry.terraform.io/aztfmod/azurecaf"
+      source = "registry.terraform.io/aztfmodnew/azurecaf"
     }
   }
 }
@@ -62,7 +62,7 @@ output "result" {
 	overrideConfig := fmt.Sprintf(`
 provider_installation {
   dev_overrides {
-    "aztfmod/azurecaf" = "%s"
+    "aztfmodnew/azurecaf" = "%s"
   }
   direct {}
 }

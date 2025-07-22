@@ -58,7 +58,7 @@ func NewE2ETestSuite(t *testing.T) *E2ETestSuite {
 	
 	return &E2ETestSuite{
 		WorkingDir:     workingDir,
-		ProviderSource: "aztfmod.com/test/azurecaf",
+		ProviderSource: "aztfmodnew.com/test/azurecaf",
 		Timeout:        10 * time.Minute,
 		CleanupEnabled: true,
 	}

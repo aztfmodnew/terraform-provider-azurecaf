@@ -22,7 +22,7 @@ func TestE2EDataSource(t *testing.T) {
 terraform {
   required_providers {
     azurecaf = {
-      source = "registry.terraform.io/aztfmod/azurecaf"
+      source = "registry.terraform.io/aztfmodnew/azurecaf"
     }
   }
 }
@@ -47,7 +47,7 @@ func TestE2ENamingConventions(t *testing.T) {
 terraform {
   required_providers {
     azurecaf = {
-      source = "registry.terraform.io/aztfmod/azurecaf"
+      source = "registry.terraform.io/aztfmodnew/azurecaf"
     }
   }
 }
@@ -83,7 +83,7 @@ func TestE2EMultipleResourceTypes(t *testing.T) {
 terraform {
   required_providers {
     azurecaf = {
-      source = "registry.terraform.io/aztfmod/azurecaf"
+      source = "registry.terraform.io/aztfmodnew/azurecaf"
     }
   }
 }
@@ -130,7 +130,7 @@ func TestE2EImportFunctionality(t *testing.T) {
 terraform {
   required_providers {
     azurecaf = {
-      source = "registry.terraform.io/aztfmod/azurecaf"
+      source = "registry.terraform.io/aztfmodnew/azurecaf"
     }
   }
 }
@@ -188,7 +188,7 @@ func runE2ETest(t *testing.T, testName, tfConfig string, expectedStrings []strin
 	overrideConfig := fmt.Sprintf(`
 provider_installation {
   dev_overrides {
-    "aztfmod/azurecaf" = "%s"
+    "aztfmodnew/azurecaf" = "%s"
   }
   direct {}
 }
@@ -259,7 +259,7 @@ func runE2EImportTest(t *testing.T, testName, tfConfig, importID string) {
 	overrideConfig := fmt.Sprintf(`
 provider_installation {
   dev_overrides {
-    "aztfmod/azurecaf" = "%s"
+    "aztfmodnew/azurecaf" = "%s"
   }
   direct {}
 }

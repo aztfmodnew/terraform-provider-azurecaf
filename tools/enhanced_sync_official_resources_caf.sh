@@ -229,7 +229,7 @@ OFFICIAL_CAF_MAPPING = {
     'azurerm_route_table': 'rt',
     'azurerm_route': 'udr',
     'azurerm_public_ip': 'pip',
-    'azurerm_lb': 'lbe',
+    'azurerm_lb': 'lb',
     'azurerm_lb_internal': 'lbi',
     'azurerm_application_gateway': 'agw',
     'azurerm_firewall': 'afw',
@@ -454,6 +454,7 @@ def caf_mapping:
     "azurerm_bot_service": "bot",
     "azurerm_mysql_server": "mysql",
     "azurerm_postgresql_server": "psql",
+    "azurerm_mariadb_server": "maria",
     "azurerm_private_dns_zone": "dns",
     "azurerm_sql_elasticpool": "sqlep",
     "azurerm_sql_server": "sql",
@@ -466,7 +467,58 @@ def caf_mapping:
     "azurerm_storage_account": "st",
     "azurerm_frontdoor_profile": "afd",
     "azurerm_image": "it",
-    "azurerm_mssql_server": "sql"
+    "azurerm_mssql_server": "sql",
+    "azurerm_application_gateway": "agw",
+    "azurerm_api_management": "apim",
+    "azurerm_container_registry": "cr",
+    "azurerm_data_factory": "adf",
+    "azurerm_databricks_workspace": "dbw",
+    "azurerm_eventgrid_topic": "egt",
+    "azurerm_eventhub": "evh",
+    "azurerm_eventhub_namespace": "evhns",
+    "azurerm_function_app": "func",
+    "azurerm_key_vault": "kv",
+    "azurerm_kubernetes_cluster": "aks",
+    "azurerm_lb": "lb",
+    "azurerm_log_analytics_workspace": "log",
+    "azurerm_logic_app_workflow": "logic",
+    "azurerm_machine_learning_workspace": "mlw",
+    "azurerm_network_interface": "nic",
+    "azurerm_network_security_group": "nsg",
+    "azurerm_public_ip": "pip",
+    "azurerm_resource_group": "rg",
+    "azurerm_route_table": "rt",
+    "azurerm_service_bus_namespace": "sb",
+    "azurerm_service_bus_queue": "sbq",
+    "azurerm_service_bus_topic": "sbt",
+    "azurerm_servicebus_namespace": "sb",
+    "azurerm_app_service": "app",
+    "azurerm_app_service_plan": "plan",
+    "azurerm_automation_account": "aa",
+    "azurerm_backup_vault": "bvault",
+    "azurerm_bastion_host": "bas",
+    "azurerm_batch_account": "ba",
+    "azurerm_cdn_profile": "cdnp",
+    "azurerm_cosmosdb_account": "cosmos",
+    "azurerm_disk_encryption_set": "des",
+    "azurerm_express_route_circuit": "erc",
+    "azurerm_firewall": "afw",
+    "azurerm_firewall_policy": "afwp",
+    "azurerm_managed_disk": "disk",
+    "azurerm_nat_gateway": "ng",
+    "azurerm_private_endpoint": "pe",
+    "azurerm_recovery_services_vault": "rsv",
+    "azurerm_redis_cache": "redis",
+    "azurerm_search_service": "srch",
+    "azurerm_signalr_service": "sigr",
+    "azurerm_snapshot": "snap",
+    "azurerm_synapse_workspace": "syn",
+    "azurerm_traffic_manager_profile": "traf",
+    "azurerm_user_assigned_identity": "id",
+    "azurerm_virtual_network": "vnet",
+    "azurerm_virtual_network_gateway": "vgw",
+    "azurerm_virtual_wan": "vwan",
+    "azurerm_web_application_firewall_policy": "waf"
 };
 
 # Apply CAF corrections
@@ -491,8 +543,8 @@ CAF_JQ
         local changes=$(jq '[.[] | select(.caf_corrected == true)] | length' "$temp_file")
         
         if [ "$changes" -gt 0 ]; then
-            # Remove the temporary flag and save
-            jq 'map(del(.caf_corrected))' "$temp_file" > "$RESDEF"
+            # Keep the caf_corrected flag for now, we'll remove it after resolving duplicates
+            cp "$temp_file" "$RESDEF"
             log_success "✅ Applied $changes CAF corrections to $RESDEF"
             echo "🏷️ CAF CORRECTIONS APPLIED:"
             echo "=================================="
@@ -511,6 +563,9 @@ CAF_JQ
     
     # Resolve any duplicate conflicts created by CAF corrections
     resolve_duplicate_conflicts
+    
+    # Now remove the temporary caf_corrected flags
+    jq 'map(del(.caf_corrected))' "$RESDEF" > "$temp_file" && mv "$temp_file" "$RESDEF"
 }
 
 resolve_duplicate_conflicts() {
@@ -541,16 +596,25 @@ def generate_alt_slug(name; base_slug):
         (name | split("_")[2:4] | join(""))
     end;
 
-# Process resources to resolve conflicts
+# Process resources to resolve conflicts, but preserve CAF corrections
 group_by(.slug) |
 map(
     if length > 1 then
         # Multiple resources share the same slug
         sort_by(.name) |
+        # Prefer resources with caf_corrected flag set to true
+        sort_by(.caf_corrected != true) |
         .[0] as $first |
         [
             $first,
-            (.[1:] | map(. + {"slug": generate_alt_slug(.name; .slug)}))
+            (.[1:] | map(
+                # Only change slug if this resource doesn't have CAF correction
+                if .caf_corrected == true then 
+                    .
+                else
+                    . + {"slug": generate_alt_slug(.name; .slug)}
+                end
+            ))
         ] | flatten
     else
         .
@@ -603,7 +667,7 @@ fetch_hashicorp_resources() {
     sed 's/.*\/resources\///g' "$resource_links" | \
         sed 's/^/azurerm_/' | \
         grep -E '^azurerm_[a-zA-Z][a-zA-Z0-9_]*[a-zA-Z0-9]$' | \
-        grep -v 'azurerm_com_\|azurerm_www_\|azurerm_http' | \
+        grep -v 'azurerm_com_\|azurerm_www_\|azurerm_http\|azurerm_legal\|azurerm_mscc\|azurerm_answers\|azurerm_fwlink\|azurerm_pdfstore\|azurerm_t5\|azurerm_en' | \
         sort -u > "$hashicorp_resources"
     
     local resource_count=$(wc -l < "$hashicorp_resources")

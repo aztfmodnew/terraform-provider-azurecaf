@@ -842,7 +842,7 @@ def add_all_missing_caf_resources():
                 'category': 'Networking'
             },
             'azurerm_lb': {
-                'slug': 'lbe',
+                'slug': 'lb',
                 'description': 'Load balancer (external)',
                 'category': 'Networking'
             },

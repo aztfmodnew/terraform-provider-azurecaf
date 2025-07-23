@@ -178,7 +178,7 @@ def update_to_official_caf_abbreviations():
             'azurerm_frontdoor_endpoint': 'fde',
             'azurerm_frontdoor_firewall_policy': 'fdfp',
             'azurerm_ip_group': 'ipg',
-            'azurerm_lb': 'lbe',  # External load balancer
+            'azurerm_lb': 'lb',  # External load balancer
             'azurerm_lb_rule': 'rule',
             'azurerm_local_network_gateway': 'lgw',
             'azurerm_nat_gateway': 'ng',

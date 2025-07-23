@@ -25,25 +25,32 @@ echo "║        Adding prioritized missing resources automatically    ║"
 echo "╚══════════════════════════════════════════════════════════════╝"
 echo -e "${NC}"
 
-# Check if we have a recent enhanced sync report
-latest_report=$(ls -t "$SCRIPT_DIR"/enhanced_sync_report_*.md 2>/dev/null | head -1)
+# Check if we have a recent CAF compliance report
+latest_report=$(ls -t "$SCRIPT_DIR"/caf_compliance_report_*.md 2>/dev/null | head -1)
 
 if [ -z "$latest_report" ]; then
-    log_warning "No recent enhanced sync report found. Running sync first..."
-    if ! "$SCRIPT_DIR/sync_official_resources.sh"; then
+    log_warning "No recent CAF compliance report found. Running sync first..."
+    if ! "$SCRIPT_DIR/enhanced_sync_official_resources_caf.sh"; then
         echo "Failed to run sync. Exiting."
         exit 1
     fi
-    latest_report=$(ls -t "$SCRIPT_DIR"/enhanced_sync_report_*.md 2>/dev/null | head -1)
+    latest_report=$(ls -t "$SCRIPT_DIR"/caf_compliance_report_*.md 2>/dev/null | head -1)
 fi
 
 log_info "Using sync report: $(basename "$latest_report")"
 
-# Extract missing resources from the report
+# Extract missing resources from the CAF compliance report
 missing_file="$SCRIPT_DIR/temp_missing_resources.txt"
-sed -n '/### Missing Resources Found/,/## Detailed Analysis/p' "$latest_report" | \
-    grep '^- `azurerm_' | \
-    sed 's/^- `//;s/`$//' > "$missing_file"
+
+# Check if the report says "No missing resources found"
+if grep -q "No missing resources found" "$latest_report"; then
+    echo > "$missing_file"  # Create empty file
+else
+    # Extract missing resources from the report (new CAF format)
+    sed -n '/## 📋 Missing Resources/,/## 🛠️ Available Automation Scripts/p' "$latest_report" | \
+        grep '^- `azurerm_' | \
+        sed 's/^- `//;s/`$//' > "$missing_file"
+fi
 
 total_missing=$(wc -l < "$missing_file" 2>/dev/null || echo "0")
 log_info "Found $total_missing missing resources"

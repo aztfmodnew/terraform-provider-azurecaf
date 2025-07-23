@@ -170,7 +170,12 @@ fetch_hashicorp_resources_comprehensive() {
     local github_response="$TEMP_DIR/github_resources.json"
     
     if curl -s -L "$github_url" > "$github_response" 2>/dev/null; then
-        if jq -r '.[].name' "$github_response" 2>/dev/null | grep '\.html\.markdown$' | sed 's/\.html\.markdown$//' | sed 's/^/azurerm_/' >> "$final_resources"; then
+        if jq -r '.[].name' "$github_response" 2>/dev/null | \
+            grep '\.html\.markdown$' | \
+            sed 's/\.html\.markdown$//' | \
+            sed 's/^/azurerm_/' | \
+            grep -E '^azurerm_[a-zA-Z][a-zA-Z0-9_]*[a-zA-Z0-9]$' | \
+            grep -v 'azurerm_com_\|azurerm_www_\|azurerm_http\|azurerm_legal\|azurerm_mscc\|azurerm_answers\|azurerm_fwlink\|azurerm_pdfstore\|azurerm_t5' >> "$final_resources"; then
             log_success "Extracted resources from GitHub repository"
         fi
     fi

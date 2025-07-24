@@ -30,6 +30,9 @@ builds:
 archives:
   - format: zip
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - target: "{{ .Binary }}"
+        src: "{{ .Binary }}"
 checksum:
   extra_files:
     - glob: 'terraform-registry-manifest.json'

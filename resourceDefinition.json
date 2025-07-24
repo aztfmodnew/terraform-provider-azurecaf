@@ -2701,7 +2701,7 @@
     "name": "azurerm_app_service_environment_hosting",
     "min_length": 1,
     "max_length": 24,
-    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9-_]{0,23}[a-zA-Z0-9]$\"",
+    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9-_]{0,22}[a-zA-Z0-9]$\"",
     "scope": "resourceGroup",
     "slug": "host",
     "dashes": true,
@@ -12065,12 +12065,12 @@
     "max_length": 64,
     "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,62}[a-zA-Z0-9_]$\"",
     "scope": "resourceGroup",
-    "slug": "pe",
+    "slug": "pep",
     "dashes": true,
     "lowercase": false,
     "regex": "\"[^0-9A-Za-z_.-]\"",
     "official": {
-      "slug": "pe",
+      "slug": "pep",
       "resource": "Private endpoint",
       "resource_provider_namespace": "Microsoft.Network/privateEndpoints"
     }

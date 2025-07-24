@@ -35,3 +35,6 @@ e2e/**/terraform.rc
 
 # Terraform configuration files
 **/terraform.rc
+
+# Tools reports
+tools/caf_compliance_report_*.md

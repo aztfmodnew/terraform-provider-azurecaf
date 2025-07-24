@@ -25,10 +25,12 @@ OFFICIAL_CAF_MAPPING = {
     'azurerm_function_app': 'func',
     'azurerm_key_vault': 'kv',
     'azurerm_kubernetes_cluster': 'aks',
-    'azurerm_lb': 'lbe',
+    'azurerm_lb': 'lbe',  # Load balancer external (default for generic LB)
     'azurerm_log_analytics_workspace': 'log',
+    'azurerm_logic_app_workflow': 'logic',  # Official CAF recommendation
     'azurerm_managed_disk': 'disk',
     'azurerm_mysql_server': 'mysql',
+    'azurerm_mssql_server': 'sql',  # Current Microsoft SQL Server
     'azurerm_network_interface': 'nic',
     'azurerm_network_security_group': 'nsg',
     'azurerm_postgresql_server': 'psql',

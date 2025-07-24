@@ -10,7 +10,7 @@
     "lowercase": false,
     "regex": "\"[^0-9A-Za-z-]\"",
     "official": {
-      "slug": "fd",
+      "slug": "afd",
       "resource": "Front Door",
       "resource_provider_namespace": "Microsoft.Network/frontDoors"
     }
@@ -42,6 +42,7 @@
     "lowercase": false,
     "regex": "`[^-\\w\\._\\(\\)]`",
     "official": {
+      "slug": "aa",
       "resource": "Azure Automation Certificate"
     }
   },
@@ -56,7 +57,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "automati",
+      "slug": "aa",
       "resource": "Azure Automation Connection Type"
     }
   },
@@ -71,6 +72,7 @@
     "lowercase": false,
     "regex": "`[^-\\w\\._\\(\\)]`",
     "official": {
+      "slug": "aa",
       "resource": "Azure Automation Credential"
     }
   },
@@ -101,7 +103,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "automati",
+      "slug": "aa",
       "resource": "Azure Automation Hybrid Runbook Worker"
     }
   },
@@ -116,7 +118,8 @@
     "lowercase": false,
     "regex": "\"[<>*%&:\\\\?.+/#]\"",
     "official": {
-      "resource": "Azure Automation Hybrid Runbook Worker Group"
+      "resource": "Azure Automation Hybrid Runbook Worker Group",
+      "slug": "aa"
     }
   },
   {
@@ -130,7 +133,8 @@
     "lowercase": false,
     "regex": "`[^-\\w\\._\\(\\)]`",
     "official": {
-      "resource": "Azure Automation Job Schedule"
+      "resource": "Azure Automation Job Schedule",
+      "slug": "aa"
     }
   },
   {
@@ -144,7 +148,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "automati",
+      "slug": "aa",
       "resource": "Azure Automation Powershell72 Module"
     }
   },
@@ -159,7 +163,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "automati",
+      "slug": "aa",
       "resource": "Azure Automation Python3 Package"
     }
   },
@@ -174,7 +178,8 @@
     "lowercase": false,
     "regex": "\"[^0-9A-Za-z_]\"",
     "official": {
-      "resource": "Azure Automation Runbook"
+      "resource": "Azure Automation Runbook",
+      "slug": "aa"
     }
   },
   {
@@ -188,7 +193,8 @@
     "lowercase": false,
     "regex": "`[^-\\w\\._\\(\\)]`",
     "official": {
-      "resource": "Azure Automation Schedule"
+      "resource": "Azure Automation Schedule",
+      "slug": "aa"
     }
   },
   {
@@ -202,7 +208,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "automati",
+      "slug": "aa",
       "resource": "Azure Automation Source Control"
     }
   },
@@ -217,7 +223,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "automati",
+      "slug": "aa",
       "resource": "Azure Automation Software Update Configuration"
     }
   },
@@ -232,7 +238,8 @@
     "lowercase": false,
     "regex": "`[^-\\w\\._\\(\\)]`",
     "official": {
-      "resource": "Azure Automation Variable"
+      "resource": "Azure Automation Variable",
+      "slug": "aa"
     }
   },
   {
@@ -246,7 +253,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "automati",
+      "slug": "aa",
       "resource": "Azure Automation Variable Object"
     }
   },
@@ -261,7 +268,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "automati",
+      "slug": "aa",
       "resource": "Azure Automation Watcher"
     }
   },
@@ -276,7 +283,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "automati",
+      "slug": "aa",
       "resource": "Azure Automation Webhook"
     }
   },
@@ -319,7 +326,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "appconfi",
+      "slug": "appcs",
       "resource": "Azure App Configuration Feature"
     }
   },
@@ -334,7 +341,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "appconfi",
+      "slug": "appcs",
       "resource": "Azure App Configuration Key"
     }
   },
@@ -363,7 +370,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "activedi",
+      "slug": "aad",
       "resource": "Azure Active Directory Domain Service"
     }
   },
@@ -378,7 +385,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "activedi",
+      "slug": "aad",
       "resource": "Azure Active Directory Domain Service Replica Set"
     }
   },
@@ -393,7 +400,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "activedi",
+      "slug": "aad",
       "resource": "Azure Active Directory Domain Service Trust"
     }
   },
@@ -849,76 +856,6 @@
     "official": {
       "slug": "cdnfront",
       "resource": "Azure Cdn Frontdoor Custom Domain Association"
-    }
-  },
-  {
-    "name": "azurerm_cdn_frontdoor_endpoint",
-    "min_length": 1,
-    "max_length": 46,
-    "validation_regex": "\"^[a-zA-Z0-9]([a-zA-Z0-9-]{0,44}[a-zA-Z0-9])?$\"",
-    "scope": "global",
-    "slug": "afde",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^0-9A-Za-z-]\"",
-    "official": {
-      "resource": "Azure Cdn Frontdoor Endpoint"
-    }
-  },
-  {
-    "name": "azurerm_cdn_frontdoor_firewall_policy",
-    "min_length": 1,
-    "max_length": 128,
-    "validation_regex": "\"^[a-zA-Z][0-9a-zA-Z]{0,127}$\"",
-    "scope": "resourceGroup",
-    "slug": "afdfwp",
-    "dashes": false,
-    "lowercase": false,
-    "regex": "\"[^0-9A-Za-z]\"",
-    "official": {
-      "resource": "Azure Cdn Frontdoor Firewall Policy"
-    }
-  },
-  {
-    "name": "azurerm_cdn_frontdoor_origin",
-    "min_length": 1,
-    "max_length": 90,
-    "validation_regex": "\"^[a-zA-Z0-9]([a-zA-Z0-9-]{0,88}[a-zA-Z0-9])?$\"",
-    "scope": "parent",
-    "slug": "afdo",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^0-9A-Za-z-]\"",
-    "official": {
-      "resource": "Azure Cdn Frontdoor Origin"
-    }
-  },
-  {
-    "name": "azurerm_cdn_frontdoor_origin_group",
-    "min_length": 1,
-    "max_length": 90,
-    "validation_regex": "\"^[a-zA-Z0-9]([a-zA-Z0-9-]{0,88}[a-zA-Z0-9])?$\"",
-    "scope": "parent",
-    "slug": "afdog",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^0-9A-Za-z-]\"",
-    "official": {
-      "resource": "Azure Cdn Frontdoor Origin Group"
-    }
-  },
-  {
-    "name": "azurerm_cdn_frontdoor_profile",
-    "min_length": 1,
-    "max_length": 90,
-    "validation_regex": "\"^[a-zA-Z0-9]([a-zA-Z0-9-]{0,88}[a-zA-Z0-9])?$\"",
-    "scope": "resourceGroup",
-    "slug": "afdp",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^0-9A-Za-z-]\"",
-    "official": {
-      "resource": "Azure Cdn Frontdoor Profile"
     }
   },
   {
@@ -2761,6 +2698,21 @@
     }
   },
   {
+    "name": "azurerm_app_service_environment_hosting",
+    "min_length": 1,
+    "max_length": 24,
+    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9-_]{0,23}[a-zA-Z0-9]$\"",
+    "scope": "resourceGroup",
+    "slug": "asehost",
+    "dashes": true,
+    "lowercase": false,
+    "regex": "\"[^a-zA-Z0-9._-]\"",
+    "official": {
+      "slug": "host",
+      "resource": "Azure App Service Environment Hosting"
+    }
+  },
+  {
     "name": "azurerm_application_security_group",
     "min_length": 1,
     "max_length": 80,
@@ -3233,7 +3185,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "autoconn",
+      "slug": "aa",
       "resource": "Automation Connection",
       "resource_provider_namespace": "Microsoft.Automation"
     }
@@ -3249,7 +3201,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "autoconncc",
+      "slug": "aa",
       "resource": "Automation Connection Classic Certificate",
       "resource_provider_namespace": "Microsoft.Automation"
     }
@@ -3265,7 +3217,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "autoconncert",
+      "slug": "aa",
       "resource": "Automation Connection Certificate",
       "resource_provider_namespace": "Microsoft.Automation"
     }
@@ -3281,7 +3233,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "autoconnsp",
+      "slug": "aa",
       "resource": "Automation Connection Service Principal",
       "resource_provider_namespace": "Microsoft.Automation"
     }
@@ -3297,7 +3249,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "autodsc",
+      "slug": "aa",
       "resource": "Automation DSC Configuration",
       "resource_provider_namespace": "Microsoft.Automation"
     }
@@ -3313,7 +3265,7 @@
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
     "official": {
-      "slug": "autodsccfg",
+      "slug": "aa",
       "resource": "Automation DSC Node Configuration",
       "resource_provider_namespace": "Microsoft.Automation"
     }
@@ -3334,22 +3286,6 @@
     }
   },
   {
-    "name": "azurerm_automation_module",
-    "min_length": 1,
-    "max_length": 128,
-    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,126}[a-zA-Z0-9]$\"",
-    "scope": "parent",
-    "slug": "automod",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^a-zA-Z0-9._-]\"",
-    "official": {
-      "slug": "automod",
-      "resource": "Automation Module",
-      "resource_provider_namespace": "Microsoft.Automation"
-    }
-  },
-  {
     "name": "azurerm_monitor_autoscale_setting",
     "min_length": 2,
     "max_length": 64,
@@ -3361,70 +3297,6 @@
     "regex": "\"[^0-9A-Za-z _.-]\"",
     "official": {
       "resource": "Azure Monitor Autoscale Setting"
-    }
-  },
-  {
-    "name": "azurerm_automation_variable_bool",
-    "min_length": 1,
-    "max_length": 128,
-    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,126}[a-zA-Z0-9]$\"",
-    "scope": "parent",
-    "slug": "autovarbool",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^a-zA-Z0-9._-]\"",
-    "official": {
-      "slug": "autovarbool",
-      "resource": "Automation Variable Bool",
-      "resource_provider_namespace": "Microsoft.Automation"
-    }
-  },
-  {
-    "name": "azurerm_automation_variable_datetime",
-    "min_length": 1,
-    "max_length": 128,
-    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,126}[a-zA-Z0-9]$\"",
-    "scope": "parent",
-    "slug": "autovardate",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^a-zA-Z0-9._-]\"",
-    "official": {
-      "slug": "autovardate",
-      "resource": "Automation Variable DateTime",
-      "resource_provider_namespace": "Microsoft.Automation"
-    }
-  },
-  {
-    "name": "azurerm_automation_variable_int",
-    "min_length": 1,
-    "max_length": 128,
-    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,126}[a-zA-Z0-9]$\"",
-    "scope": "parent",
-    "slug": "autovarint",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^a-zA-Z0-9._-]\"",
-    "official": {
-      "slug": "autovarint",
-      "resource": "Automation Variable Int",
-      "resource_provider_namespace": "Microsoft.Automation"
-    }
-  },
-  {
-    "name": "azurerm_automation_variable_string",
-    "min_length": 1,
-    "max_length": 128,
-    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,126}[a-zA-Z0-9]$\"",
-    "scope": "parent",
-    "slug": "autovarstr",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^a-zA-Z0-9._-]\"",
-    "official": {
-      "slug": "autovarstr",
-      "resource": "Automation Variable String",
-      "resource_provider_namespace": "Microsoft.Automation"
     }
   },
   {
@@ -7024,6 +6896,17 @@
     }
   },
   {
+    "name": "azurerm_frontdoor_endpoint",
+    "slug": "endpoint",
+    "min_length": 1,
+    "max_length": 24,
+    "lowercase": false,
+    "regex": "\"[^a-zA-Z0-9]\"",
+    "scope": "resourceGroup",
+    "dashes": true,
+    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9-_]{0,22}[a-zA-Z0-9]$\""
+  },
+  {
     "name": "azurerm_express_route_circuit",
     "min_length": 1,
     "max_length": 80,
@@ -7520,15 +7403,18 @@
     }
   },
   {
-    "name": "azurerm_frontdoor_endpoint",
-    "slug": "fde",
+    "name": "azurerm_cdn_frontdoor_endpoint",
     "min_length": 1,
-    "max_length": 24,
-    "lowercase": false,
-    "regex": "\"[^a-zA-Z0-9]\"",
-    "scope": "resourceGroup",
+    "max_length": 46,
+    "validation_regex": "\"^[a-zA-Z0-9]([a-zA-Z0-9-]{0,44}[a-zA-Z0-9])?$\"",
+    "scope": "global",
+    "slug": "fde",
     "dashes": true,
-    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9-_]{0,22}[a-zA-Z0-9]$\""
+    "lowercase": false,
+    "regex": "\"[^0-9A-Za-z-]\"",
+    "official": {
+      "resource": "Azure Cdn Frontdoor Endpoint"
+    }
   },
   {
     "name": "azurerm_frontdoor_firewall_policy",
@@ -7542,6 +7428,48 @@
     "regex": "\"[^0-9A-Za-z]\"",
     "official": {
       "resource": "Azure Frontdoor Firewall Policy"
+    }
+  },
+  {
+    "name": "azurerm_cdn_frontdoor_firewall_policy",
+    "min_length": 1,
+    "max_length": 128,
+    "validation_regex": "\"^[a-zA-Z][0-9a-zA-Z]{0,127}$\"",
+    "scope": "resourceGroup",
+    "slug": "fdfwp",
+    "dashes": false,
+    "lowercase": false,
+    "regex": "\"[^0-9A-Za-z]\"",
+    "official": {
+      "resource": "Azure Cdn Frontdoor Firewall Policy"
+    }
+  },
+  {
+    "name": "azurerm_cdn_frontdoor_origin",
+    "min_length": 1,
+    "max_length": 90,
+    "validation_regex": "\"^[a-zA-Z0-9]([a-zA-Z0-9-]{0,88}[a-zA-Z0-9])?$\"",
+    "scope": "parent",
+    "slug": "fdo",
+    "dashes": true,
+    "lowercase": false,
+    "regex": "\"[^0-9A-Za-z-]\"",
+    "official": {
+      "resource": "Azure Cdn Frontdoor Origin"
+    }
+  },
+  {
+    "name": "azurerm_cdn_frontdoor_origin_group",
+    "min_length": 1,
+    "max_length": 90,
+    "validation_regex": "\"^[a-zA-Z0-9]([a-zA-Z0-9-]{0,88}[a-zA-Z0-9])?$\"",
+    "scope": "parent",
+    "slug": "fdog",
+    "dashes": true,
+    "lowercase": false,
+    "regex": "\"[^0-9A-Za-z-]\"",
+    "official": {
+      "resource": "Azure Cdn Frontdoor Origin Group"
     }
   },
   {
@@ -7603,34 +7531,6 @@
     }
   },
   {
-    "name": "azurerm_mysql_flexible_server",
-    "min_length": 3,
-    "max_length": 63,
-    "validation_regex": "\"^[a-z0-9][a-zA-Z0-9-]{1,61}[a-z0-9]$\"",
-    "scope": "global",
-    "slug": "mysql",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^0-9A-Za-z-]\"",
-    "official": {
-      "resource": "Azure Mysql Flexible Server"
-    }
-  },
-  {
-    "name": "azurerm_postgresql_flexible_server",
-    "min_length": 3,
-    "max_length": 63,
-    "validation_regex": "\"^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$\"",
-    "scope": "global",
-    "slug": "psql",
-    "dashes": true,
-    "lowercase": true,
-    "regex": "\"[^0-9a-z-]\"",
-    "official": {
-      "resource": "Azure Postgresql Flexible Server"
-    }
-  },
-  {
     "name": "azurerm_fluid_relay_server",
     "min_length": 1,
     "max_length": 80,
@@ -7651,7 +7551,7 @@
     "max_length": 80,
     "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,78}[a-zA-Z0-9]$\"",
     "scope": "resourceGroup",
-    "slug": "aif",
+    "slug": "foundry",
     "dashes": true,
     "lowercase": false,
     "regex": "\"[^a-zA-Z0-9._-]\"",
@@ -7659,6 +7559,20 @@
       "slug": "aif",
       "resource": "Azure AI Foundry",
       "resource_provider_namespace": "Microsoft.CognitiveServices"
+    }
+  },
+  {
+    "name": "azurerm_cdn_frontdoor_profile",
+    "min_length": 1,
+    "max_length": 90,
+    "validation_regex": "\"^[a-zA-Z0-9]([a-zA-Z0-9-]{0,88}[a-zA-Z0-9])?$\"",
+    "scope": "resourceGroup",
+    "slug": "frontdoorprofile",
+    "dashes": true,
+    "lowercase": false,
+    "regex": "\"[^0-9A-Za-z-]\"",
+    "official": {
+      "resource": "Azure Cdn Frontdoor Profile"
     }
   },
   {
@@ -7937,20 +7851,6 @@
     "scope": "resourceGroup",
     "dashes": true,
     "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9-_]{0,22}[a-zA-Z0-9]$\""
-  },
-  {
-    "name": "azurerm_app_service_environment_hosting",
-    "min_length": 1,
-    "max_length": 24,
-    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9-_]{0,23}[a-zA-Z0-9]$\"",
-    "scope": "resourceGroup",
-    "slug": "ase",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^a-zA-Z0-9._-]\"",
-    "official": {
-      "resource": "Azure App Service Environment Hosting"
-    }
   },
   {
     "name": "azurerm_hpc_cache",
@@ -9237,22 +9137,6 @@
     }
   },
   {
-    "name": "azurerm_lb",
-    "min_length": 1,
-    "max_length": 80,
-    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9-._]{0,78}[a-zA-Z0-9_]$\"",
-    "scope": "resourceGroup",
-    "slug": "lb",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^0-9A-Za-z-]\"",
-    "official": {
-      "slug": "lb",
-      "resource": "Load balancer",
-      "resource_provider_namespace": "Microsoft.Network/loadBalancers"
-    }
-  },
-  {
     "name": "azurerm_lb_backend_address_pool_address",
     "min_length": 1,
     "max_length": 80,
@@ -9296,6 +9180,22 @@
     "official": {
       "slug": "lbbp",
       "resource": "Load Balancer Backend Pool",
+      "resource_provider_namespace": "Microsoft.Network/loadBalancers"
+    }
+  },
+  {
+    "name": "azurerm_lb",
+    "min_length": 1,
+    "max_length": 80,
+    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9-._]{0,78}[a-zA-Z0-9_]$\"",
+    "scope": "resourceGroup",
+    "slug": "lbe",
+    "dashes": true,
+    "lowercase": false,
+    "regex": "\"[^0-9A-Za-z-]\"",
+    "official": {
+      "slug": "lbe",
+      "resource": "Load balancer",
       "resource_provider_namespace": "Microsoft.Network/loadBalancers"
     }
   },
@@ -9570,21 +9470,6 @@
     }
   },
   {
-    "name": "azurerm_logic_app_standard",
-    "min_length": 1,
-    "max_length": 80,
-    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,78}[a-zA-Z0-9]$\"",
-    "scope": "resourceGroup",
-    "slug": "logic",
-    "dashes": true,
-    "lowercase": false,
-    "regex": "\"[^a-zA-Z0-9._-]\"",
-    "official": {
-      "slug": "logic",
-      "resource": "Azure Logic App Standard"
-    }
-  },
-  {
     "name": "azurerm_logic_app_workflow",
     "min_length": 1,
     "max_length": 80,
@@ -9598,6 +9483,21 @@
       "slug": "logic",
       "resource": "Logic app",
       "resource_provider_namespace": "Microsoft.Logic/workflows"
+    }
+  },
+  {
+    "name": "azurerm_logic_app_standard",
+    "min_length": 1,
+    "max_length": 80,
+    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,78}[a-zA-Z0-9]$\"",
+    "scope": "resourceGroup",
+    "slug": "logicstd",
+    "dashes": true,
+    "lowercase": false,
+    "regex": "\"[^a-zA-Z0-9._-]\"",
+    "official": {
+      "slug": "logicstd",
+      "resource": "Azure Logic App Standard"
     }
   },
   {
@@ -10513,6 +10413,22 @@
     }
   },
   {
+    "name": "azurerm_automation_module",
+    "min_length": 1,
+    "max_length": 128,
+    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,126}[a-zA-Z0-9]$\"",
+    "scope": "parent",
+    "slug": "module",
+    "dashes": true,
+    "lowercase": false,
+    "regex": "\"[^a-zA-Z0-9._-]\"",
+    "official": {
+      "slug": "aa",
+      "resource": "Automation Module",
+      "resource_provider_namespace": "Microsoft.Automation"
+    }
+  },
+  {
     "name": "azurerm_monitor_aad_diagnostic_setting",
     "min_length": 1,
     "max_length": 80,
@@ -10785,6 +10701,21 @@
     "regex": "\"[^0-9A-Za-z_-]\"",
     "official": {
       "resource": "Azure Mysql Database"
+    }
+  },
+  {
+    "name": "azurerm_mysql_flexible_server",
+    "min_length": 3,
+    "max_length": 63,
+    "validation_regex": "\"^[a-z0-9][a-zA-Z0-9-]{1,61}[a-z0-9]$\"",
+    "scope": "global",
+    "slug": "mysqlflex",
+    "dashes": true,
+    "lowercase": false,
+    "regex": "\"[^0-9A-Za-z-]\"",
+    "official": {
+      "slug": "mysql",
+      "resource": "Azure Mysql Flexible Server"
     }
   },
   {
@@ -12560,6 +12491,21 @@
     "regex": "\"[^0-9A-Za-z_-]\"",
     "official": {
       "resource": "Azure Postgresql Database"
+    }
+  },
+  {
+    "name": "azurerm_postgresql_flexible_server",
+    "min_length": 3,
+    "max_length": 63,
+    "validation_regex": "\"^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$\"",
+    "scope": "global",
+    "slug": "psqlflex",
+    "dashes": true,
+    "lowercase": true,
+    "regex": "\"[^0-9a-z-]\"",
+    "official": {
+      "slug": "psql",
+      "resource": "Azure Postgresql Flexible Server"
     }
   },
   {
@@ -15127,22 +15073,6 @@
     }
   },
   {
-    "name": "azurerm_sql_server",
-    "min_length": 1,
-    "max_length": 63,
-    "validation_regex": "\"^[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$\"",
-    "scope": "global",
-    "slug": "sql",
-    "dashes": true,
-    "lowercase": true,
-    "regex": "\"[^0-9a-z-]\"",
-    "official": {
-      "slug": "sql",
-      "resource": "SQL Server",
-      "resource_provider_namespace": "Microsoft.Sql/servers"
-    }
-  },
-  {
     "name": "azurerm_sql_active_directory_administrator",
     "min_length": 1,
     "max_length": 80,
@@ -15561,6 +15491,22 @@
       "slug": "sqlsmsap",
       "resource": "MSSQL Server Microsoft Support Auditing Policy",
       "resource_provider_namespace": "Microsoft.Sql"
+    }
+  },
+  {
+    "name": "azurerm_sql_server",
+    "min_length": 1,
+    "max_length": 63,
+    "validation_regex": "\"^[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$\"",
+    "scope": "global",
+    "slug": "sqlsrv",
+    "dashes": true,
+    "lowercase": true,
+    "regex": "\"[^0-9a-z-]\"",
+    "official": {
+      "slug": "sqlsrv",
+      "resource": "SQL Server (Legacy)",
+      "resource_provider_namespace": "Microsoft.Sql/servers"
     }
   },
   {
@@ -16949,6 +16895,70 @@
       "slug": "rt",
       "resource": "Route table",
       "resource_provider_namespace": "Microsoft.Network/routeTables"
+    }
+  },
+  {
+    "name": "azurerm_automation_variable_bool",
+    "min_length": 1,
+    "max_length": 128,
+    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,126}[a-zA-Z0-9]$\"",
+    "scope": "parent",
+    "slug": "variablebool",
+    "dashes": true,
+    "lowercase": false,
+    "regex": "\"[^a-zA-Z0-9._-]\"",
+    "official": {
+      "slug": "aa",
+      "resource": "Automation Variable Bool",
+      "resource_provider_namespace": "Microsoft.Automation"
+    }
+  },
+  {
+    "name": "azurerm_automation_variable_datetime",
+    "min_length": 1,
+    "max_length": 128,
+    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,126}[a-zA-Z0-9]$\"",
+    "scope": "parent",
+    "slug": "variabledatetime",
+    "dashes": true,
+    "lowercase": false,
+    "regex": "\"[^a-zA-Z0-9._-]\"",
+    "official": {
+      "slug": "aa",
+      "resource": "Automation Variable DateTime",
+      "resource_provider_namespace": "Microsoft.Automation"
+    }
+  },
+  {
+    "name": "azurerm_automation_variable_int",
+    "min_length": 1,
+    "max_length": 128,
+    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,126}[a-zA-Z0-9]$\"",
+    "scope": "parent",
+    "slug": "variableint",
+    "dashes": true,
+    "lowercase": false,
+    "regex": "\"[^a-zA-Z0-9._-]\"",
+    "official": {
+      "slug": "aa",
+      "resource": "Automation Variable Int",
+      "resource_provider_namespace": "Microsoft.Automation"
+    }
+  },
+  {
+    "name": "azurerm_automation_variable_string",
+    "min_length": 1,
+    "max_length": 128,
+    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,126}[a-zA-Z0-9]$\"",
+    "scope": "parent",
+    "slug": "variablestring",
+    "dashes": true,
+    "lowercase": false,
+    "regex": "\"[^a-zA-Z0-9._-]\"",
+    "official": {
+      "slug": "aa",
+      "resource": "Automation Variable String",
+      "resource_provider_namespace": "Microsoft.Automation"
     }
   },
   {

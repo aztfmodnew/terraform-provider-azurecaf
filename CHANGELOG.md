@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [v2.0.0]
 
 ### Fixed
+- **CAF Prefix Compliance**: Fixed 'general' and 'general_safe' resources to use valid CAF slugs ('gen' and 'gensafe') and updated their official slug fields to pass CAF prefix validation tests.
 - **CRITICAL**: Achieved 100% CAF Compliance with zero duplicates
   - **Load Balancer**: Updated `azurerm_lb` slug from `lb` to `lbe` (external load balancer default)
   - **Logic App Standard**: Updated `azurerm_logic_app_standard` slug from `logic` to `logicstd` to differentiate from workflow

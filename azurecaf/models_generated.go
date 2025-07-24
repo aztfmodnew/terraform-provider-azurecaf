@@ -81,7 +81,7 @@ var ResourceDefinitions = map[string]ResourceStructure{
     "azurerm_app_service_connection": {"azurerm_app_service_connection", "asconn", 1, 80,  false, "[^a-zA-Z0-9._-]", "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,78}[a-zA-Z0-9]$", true, "resourceGroup" },
     "azurerm_app_service_custom_hostname_binding": {"azurerm_app_service_custom_hostname_binding", "ashostbind", 2, 60,  false, "[^a-zA-Z0-9-]", "^[a-zA-Z0-9][a-zA-Z0-9-]{0,58}[a-zA-Z0-9]$", true, "global" },
     "azurerm_app_service_environment": {"azurerm_app_service_environment", "serviceenvironment", 2, 36,  false, "[^0-9A-Za-z-]", "^[0-9A-Za-z-]{2,36}$", true, "resourceGroup" },
-    "azurerm_app_service_environment_hosting": {"azurerm_app_service_environment_hosting", "ase", 1, 24,  false, "[^a-zA-Z0-9._-]", "^[a-zA-Z0-9][a-zA-Z0-9-_]{0,23}[a-zA-Z0-9]$", true, "resourceGroup" },
+    "azurerm_app_service_environment_hosting": {"azurerm_app_service_environment_hosting", "host", 1, 24,  false, "[^a-zA-Z0-9._-]", "^[a-zA-Z0-9][a-zA-Z0-9-_]{0,23}[a-zA-Z0-9]$", true, "resourceGroup" },
     "azurerm_app_service_environment_v3": {"azurerm_app_service_environment_v3", "ase", 1, 80,  false, "[^a-zA-Z0-9._-]", "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,78}[a-zA-Z0-9]$", true, "resourceGroup" },
     "azurerm_app_service_hybrid_connection": {"azurerm_app_service_hybrid_connection", "ashybrid", 2, 60,  false, "[^a-zA-Z0-9-]", "^[a-zA-Z0-9][a-zA-Z0-9-]{0,58}[a-zA-Z0-9]$", true, "global" },
     "azurerm_app_service_managed_certificate": {"azurerm_app_service_managed_certificate", "asmgdcert", 1, 80,  false, "[^a-zA-Z0-9._-]", "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,78}[a-zA-Z0-9]$", true, "resourceGroup" },

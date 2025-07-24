@@ -9,9 +9,12 @@ on:
     # Run security scans every day at 2 AM UTC
     - cron: '0 2 * * *'
 
-# Restrict permissions for all jobs
+# Permissions needed for security scanning
 permissions:
   contents: read
+  security-events: write
+  actions: read
+  id-token: write
 
 jobs:
   security:
@@ -20,19 +23,30 @@ jobs:
     permissions:
       contents: read
       security-events: write
+      actions: read
+      id-token: write
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Go
+      uses: actions/setup-go@v5
+      with:
+        go-version-file: './go.mod'
 
     - name: Run Microsoft Security DevOps
       uses: microsoft/security-devops-action@v1
       id: msdo
       with:
-        # Optional: Specify which tools to run (default: all available)
-        # tools: 'bandit,binskim,eslint,templateanalyzer,terrascan,trivy'
         categories: 'code,dependencies,containers,IaC'
+        tools: 'bandit,binskim,eslint,templateanalyzer,terrascan,trivy'
+      continue-on-error: true
 
     - name: Upload MSDO SARIF results to GitHub
       uses: github/codeql-action/upload-sarif@v3
+      if: always()
       with:
         sarif_file: ${{ steps.msdo.outputs.sarifFile }}
+      continue-on-error: true

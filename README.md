@@ -4,8 +4,14 @@
 [![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)](https://golang.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
+
+## Project Origin and Divergence
+
+This project is originally based on [aztfmod/azurecaf](https://github.com/aztfmod/azurecaf). Starting from version 1.2.28, it diverges from the upstream project and introduces independent improvements, bug fixes, and new features. While it shares the same foundational goals and core logic, this fork evolves separately to address specific requirements and community feedback. Please note that compatibility and feature set may differ from the original aztfmod/azurecaf provider.
+
 The azurecaf provider implements a set of methodologies for naming convention implementation, including the default Microsoft Cloud Adoption Framework for Azure recommendations as per the [Azure naming and tagging best practices](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging). 
 Please note this project is not part of Azure Cloud Adoption Framework and is supported by the community, not by Microsoft Support.
+
 
 ## 🎯 Key Features
 

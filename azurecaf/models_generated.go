@@ -107,7 +107,7 @@ var ResourceDefinitions = map[string]ResourceStructure{
     "azurerm_application_load_balancer_frontend": {"azurerm_application_load_balancer_frontend", "applbf", 1, 80,  false, "[^a-zA-Z0-9._-]", "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,78}[a-zA-Z0-9]$", true, "resourceGroup" },
     "azurerm_application_load_balancer_subnet_association": {"azurerm_application_load_balancer_subnet_association", "applbsa", 1, 80,  false, "[^a-zA-Z0-9._-]", "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,78}[a-zA-Z0-9]$", true, "resourceGroup" },
     "azurerm_application_security_group": {"azurerm_application_security_group", "asg", 1, 80,  false, "[^0-9A-Za-z_.-]", "^[a-zA-Z0-9][a-zA-Z0-9-._]{0,78}[a-zA-Z0-9_]$", true, "resourceGroup" },
-    "azurerm_arc_gateway": {"azurerm_arc_gateway", "arcgw", 1, 24,  false, "^[a-zA-Z0-9][a-zA-Z0-9-_]*[a-zA-Z0-9]$", "^[a-zA-Z0-9][a-zA-Z0-9-_]{0,22}[a-zA-Z0-9]$", true, "resourceGroup" },
+    "azurerm_arc_gateway": {"azurerm_arc_gateway", "arcgw", 1, 24,  false, "[^a-zA-Z0-9-]", "^[a-zA-Z0-9-]{1,24}$", true, "resourceGroup" },
     "azurerm_arc_kubernetes_cluster": {"azurerm_arc_kubernetes_cluster", "arck", 1, 80,  false, "[^a-zA-Z0-9._-]", "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,78}[a-zA-Z0-9]$", true, "resourceGroup" },
     "azurerm_arc_kubernetes_cluster_extension": {"azurerm_arc_kubernetes_cluster_extension", "arckce", 1, 80,  false, "[^a-zA-Z0-9._-]", "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,78}[a-zA-Z0-9]$", true, "resourceGroup" },
     "azurerm_arc_kubernetes_flux_configuration": {"azurerm_arc_kubernetes_flux_configuration", "arckfc", 1, 80,  false, "[^a-zA-Z0-9._-]", "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,78}[a-zA-Z0-9]$", true, "resourceGroup" },

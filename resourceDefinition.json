@@ -2250,12 +2250,12 @@
     "name": "azurerm_arc_gateway",
     "min_length": 1,
     "max_length": 24,
-    "validation_regex": "\"^[a-zA-Z0-9][a-zA-Z0-9-_]{0,22}[a-zA-Z0-9]$\"",
+    "validation_regex": "\"^[a-zA-Z0-9-]{1,24}$\"",
     "scope": "resourceGroup",
     "slug": "arcgw",
     "dashes": true,
     "lowercase": false,
-    "regex": "\"^[a-zA-Z0-9][a-zA-Z0-9-_]*[a-zA-Z0-9]$\""
+    "regex": "\"[^a-zA-Z0-9-]\""
   },
   {
     "name": "azurerm_arc_kubernetes_cluster",

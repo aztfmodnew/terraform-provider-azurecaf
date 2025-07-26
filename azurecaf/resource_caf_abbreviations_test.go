@@ -30,18 +30,18 @@ func loadResourceDefinitionsFromJSON(t *testing.T) []ResourceJSON {
 	// Get the current directory
 	currentDir := "."
 	jsonPath := filepath.Join(currentDir, "..", "resourceDefinition.json")
-	
+
 	data, err := ioutil.ReadFile(jsonPath)
 	if err != nil {
 		t.Fatalf("Failed to read resourceDefinition.json: %v", err)
 	}
-	
+
 	var resources []ResourceJSON
 	err = json.Unmarshal(data, &resources)
 	if err != nil {
 		t.Fatalf("Failed to parse resourceDefinition.json: %v", err)
 	}
-	
+
 	return resources
 }
 
@@ -49,7 +49,7 @@ func loadResourceDefinitionsFromJSON(t *testing.T) []ResourceJSON {
 // the official Microsoft Cloud Adoption Framework (CAF) recommendations
 func TestResourceAbbreviationsCAFCompliance(t *testing.T) {
 	resources := loadResourceDefinitionsFromJSON(t)
-	
+
 	tests := []struct {
 		resourceName     string
 		expectedSlug     string
@@ -124,7 +124,7 @@ func TestResourceAbbreviationsCAFCompliance(t *testing.T) {
 // the correct CAF abbreviation 'aa' in their official slug
 func TestCAFOfficialAbbreviations(t *testing.T) {
 	resources := loadResourceDefinitionsFromJSON(t)
-	
+
 	automationResources := []string{
 		"azurerm_automation_account",
 		"azurerm_automation_certificate",
@@ -170,7 +170,7 @@ func TestCAFOfficialAbbreviations(t *testing.T) {
 // use the correct CAF abbreviation 'appcs' in their official slug
 func TestAppConfigurationCAFAbbreviation(t *testing.T) {
 	resources := loadResourceDefinitionsFromJSON(t)
-	
+
 	appConfigResources := []string{
 		"azurerm_app_configuration_feature",
 		"azurerm_app_configuration_key",

@@ -23,7 +23,7 @@ jobs:
       id-token: write  # Required for keyless signing
     steps:
       - name: Check out code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 

@@ -4969,7 +4969,7 @@
     "max_length": 128,
     "validation_regex": "\"^[^<>*%:.?\\\\+\\\\/]{1,127}[^<>*%:.?\\\\+\\\\/ ]$\"",
     "scope": "parent",
-    "slug": "database",
+    "slug": "sqldb",
     "dashes": true,
     "lowercase": false,
     "regex": "\"[<>*%:.?\\\\+\\\\/ ]\"",
@@ -6887,12 +6887,14 @@
     "max_length": 128,
     "validation_regex": "\"^[^<>*%:.?\\\\+\\\\/]{1,127}[^<>*%:.?\\\\+\\\\/ ]$\"",
     "scope": "parent",
-    "slug": "elasticpool",
+    "slug": "sqlep",
     "dashes": true,
     "lowercase": false,
     "regex": "\"[<>*%:.?\\\\+\\\\/]\"",
     "official": {
-      "resource": "Azure Mssql Elasticpool"
+      "slug": "sqlep",
+      "resource": "Azure SQL Elastic Pool",
+      "resource_provider_namespace": "Microsoft.Sql/servers/elasticpool"
     }
   },
   {

@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
+### Added
+- (placeholder)
+
+### Changed
+- (placeholder)
+
+### Fixed
+- (placeholder)
+
+### Security
+- (placeholder)
+
+## [v3.0.0] - 2025-10-30
+
 ### Fixed
 - **Microsoft CAF Slug Compliance**: Updated resource slugs to match official Microsoft Cloud Adoption Framework recommendations
   - `azurerm_mssql_database`: Changed slug from `database` to `sqldb` (official Microsoft CAF abbreviation)

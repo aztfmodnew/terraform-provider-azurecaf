@@ -4,6 +4,39 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [Unreleased]
+
+### Fixed
+- **Microsoft CAF Slug Compliance**: Updated resource slugs to match official Microsoft Cloud Adoption Framework recommendations
+  - `azurerm_mssql_database`: Changed slug from `database` to `sqldb` (official Microsoft CAF abbreviation)
+  - `azurerm_mssql_elasticpool`: Changed slug from `elasticpool` to `sqlep` (official Microsoft CAF abbreviation)
+  - Added official resource provider namespaces to resource definitions for better compliance tracking
+  - All changes verified against https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations
+
+### Changed
+- **AI Agent Documentation**: Added comprehensive `.github/copilot-instructions.md` with project-specific patterns, architecture, and workflows
+  - Documented core components and data flows (resourceDefinition.json → gen.go → models_generated.go)
+  - Added detailed development workflows with Makefile targets and testing hierarchy
+  - Included resource definition schema and slug validation process
+  - Documented critical conventions: data source vs resource usage, regex escaping, test organization
+
+### Impact Assessment
+- **Potential Breaking Behavior**: The slug changes for `azurerm_mssql_database` (`database` → `sqldb`) and `azurerm_mssql_elasticpool` (`elasticpool` → `sqlep`) modify the generated name when your configuration uses `use_slug = true` (default) in `azurecaf_name` or `azurecaf_naming_convention`. This can trigger a resource replacement (destroy/create) in Terraform due to the name change.
+- **Existing Resources**: Previously deployed resources keep their current name as long as you don't reprovision or change inputs that regenerate it. A diff appears only if the name is recalculated and differs from the existing one.
+- **Naming Convention**: New names use official Microsoft CAF abbreviations; improves alignment but may alter prefixes.
+- **State Impact**: `terraform plan` will show a change for the `name` attribute and mark recreation for resources whose name derives directly from `azurecaf_name.*.result`.
+- **Migration Guidance (Options)**:
+  1. Preserve existing names: Set `passthrough = true` and `name = "<current_name>"` to validate without regenerating.
+  2. Remove slug influence: Use `use_slug = false` to avoid the slug change and keep the stable main portion.
+  3. Pin provider version: Lock the previous version temporarily if you need time (`version = "~> 2.0.3"`).
+  4. Controlled migration: Create new resources with CAF-compliant names and migrate data/manual steps before destroying old ones.
+  5. Prevent immediate destroy: Add `lifecycle { prevent_destroy = true }` short-term while executing migration steps.
+  6. Progressive rename: Apply first in non-prod; validate impact on dependencies (backups, alerts, connection strings) before production.
+  7. Manual import (if needed): If adopting a new name without destruction, create resource with new name, migrate, then remove the old after verification.
+- **Recommended Approach**: For future CAF consistency, adopt the new slugs and schedule a maintenance window for databases / elastic pools if the name changes.
+- **Automation Scripts**: Update any external script (CI/CD, monitoring) that derives names via slug.
+- **Rollback Strategy**: If issues arise, revert to the previous provider version and use passthrough to freeze names; then retry with a staged transition strategy.
+
 
 ## [v2.0.3] - 2025-01-27
 

@@ -74,7 +74,7 @@ func TestConcatenateParameters_azurerm_public_ip_prefix(t *testing.T) {
 func TestGetSlug(t *testing.T) {
 	resourceType := "azurerm_resource_group"
 	convention := ConventionCafClassic
-	result := getSlug(resourceType, convention)
+	result := getSlug(resourceType, convention, false)
 	expected := "rg"
 	if result != expected {
 		t.Errorf("Expected %s but received %s", expected, result)
@@ -84,7 +84,7 @@ func TestGetSlug(t *testing.T) {
 func TestGetSlug_unknown(t *testing.T) {
 	resourceType := "azurerm_does_not_exist"
 	convention := ConventionCafClassic
-	result := getSlug(resourceType, convention)
+	result := getSlug(resourceType, convention, false)
 	expected := ""
 	if result != expected {
 		t.Errorf("Expected %s but received %s", expected, result)

@@ -57,6 +57,10 @@ type ResourceStructure struct {
 	// This slug is used as a prefix in generated names to indicate resource type
 	CafPrefix string `json:"slug,omitempty"`
 
+	// LegacySlug is the deprecated slug for backward compatibility with previous provider versions
+	// Used when use_legacy_slug = true to maintain existing resource names
+	LegacySlug string `json:"legacy_slug,omitempty"`
+
 	// MinLength defines the minimum allowed length for the resource name
 	MinLength int `json:"min_length"`
 

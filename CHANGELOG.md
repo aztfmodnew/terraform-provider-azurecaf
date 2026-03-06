@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
 ## [Unreleased]
 
 ### Added
@@ -17,6 +18,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 - (placeholder)
+
+## [v3.1.0] - 2026-03-06
+
+### Added
+- **Backward Compatibility Feature**: Added `use_legacy_slug` parameter to `azurecaf_name` resource and data source
+  - Allows resources to maintain legacy slug naming from v1.x/v2.x versions
+  - `azurerm_mssql_database`: Can use legacy `database` slug instead of `sqldb`
+  - `azurerm_mssql_elasticpool`: Can use legacy `elasticpool` slug instead of `sqlep`
+  - **Default**: `use_legacy_slug = true` (maintains backward compatibility)
+  - Added `legacy_slug` field to `resourceDefinition.json` for affected resources
+
+### Changed
+- **Provider Migration Strategy**: Established deprecation path for legacy slugs
+  - v3.x: `use_legacy_slug` defaults to `true` (current)
+  - v4.0.0: `use_legacy_slug` will default to `false` (future major version)
+
+### Migration Guidance
+- **Existing Deployments**: No action required - legacy slugs remain active by default
+- **New Deployments**: Set `use_legacy_slug = false` to adopt modern CAF slugs
+- **Gradual Migration**: Can be controlled per-resource:
+  ```terraform
+  resource "azurecaf_name" "db" {
+    resource_type     = "azurerm_mssql_database"
+    use_legacy_slug   = true   # Maintains "database" slug
+  }
+  ```
+- **Preparing for v4.0.0**: Explicitly set `use_legacy_slug = true` on existing resources to ensure stability across version upgrades
+
+### Documentation
+- See migration guide: `docs/migration-slug-v4.md` (to be added)
+- For detailed v3.0.0 to v4.0.0 migration planning: Check CHANGELOG v4.0.0 notes
 
 ## [v3.0.0] - 2025-10-30
 

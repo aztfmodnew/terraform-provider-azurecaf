@@ -320,7 +320,7 @@ func TestGetSlugExtended(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			result := getSlug(tc.resourceType, tc.convention)
+			result := getSlug(tc.resourceType, tc.convention, false)
 			if result != tc.expected {
 				t.Errorf("Expected %s, got %s", tc.expected, result)
 			}

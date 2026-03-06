@@ -91,6 +91,26 @@ func TestGetSlug_unknown(t *testing.T) {
 	}
 }
 
+func TestGetSlug_legacyDatabase(t *testing.T) {
+	resourceType := "azurerm_mssql_database"
+	convention := ConventionCafClassic
+	result := getSlug(resourceType, convention, true)
+	expected := "database"
+	if result != expected {
+		t.Errorf("Expected %s but received %s", expected, result)
+	}
+}
+
+func TestGetSlug_legacyElasticPool(t *testing.T) {
+	resourceType := "azurerm_mssql_elasticpool"
+	convention := ConventionCafClassic
+	result := getSlug(resourceType, convention, true)
+	expected := "elasticpool"
+	if result != expected {
+		t.Errorf("Expected %s but received %s", expected, result)
+	}
+}
+
 func TestAccResourceName_CafClassic(t *testing.T) {
 	provider := Provider()
 	nameResource := provider.ResourcesMap["azurecaf_name"]

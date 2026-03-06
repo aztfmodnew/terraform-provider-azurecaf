@@ -19,6 +19,65 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Security
 - (placeholder)
 
+## [v4.0.0] - 2026-03-06 - MAJOR RELEASE
+
+### 🔴 BREAKING CHANGES
+- **Default Slug Behavior Changed**: `use_legacy_slug` now defaults to `false` (was `true` in v3.x)
+  - **Impact**: Resources will use modern Microsoft CAF slugs by default
+  - `azurerm_mssql_database`: Uses `sqldb` slug (was `database`)
+  - `azurerm_mssql_elasticpool`: Uses `sqlep` slug (was `elasticpool`)
+  - **Action Required**: Add `use_legacy_slug = true` to existing resource configurations to maintain current naming
+
+### Migration Path from v3.x to v4.0.0
+
+#### For Existing Deployments (Maintain Current Names)
+```terraform
+# Add to ALL existing mssql_database and mssql_elasticpool resources
+resource "azurecaf_name" "db" {
+  resource_type     = "azurerm_mssql_database"
+  name              = "mydb"
+  use_legacy_slug   = true    # ← ADD THIS to maintain "database" slug
+}
+```
+
+#### For New Deployments (Adopt Modern CAF Slugs)
+```terraform
+# Default behavior - no changes needed
+resource "azurecaf_name" "db" {
+  resource_type     = "azurerm_mssql_database"
+  name              = "mydb"
+  # use_legacy_slug = false (default) → uses "sqldb" slug
+}
+```
+
+#### Gradual Migration Strategy
+1. **Immediate**: Add `use_legacy_slug = true` to all existing resources in Terraform states
+2. **Planning**: Run `terraform plan` to confirm no unexpected changes
+3. **Selective Migration**: Remove `use_legacy_slug = true` from non-critical resources first
+4. **Validation**: Test name changes in development/staging environments
+5. **Production**: Schedule maintenance window for database renames if needed
+
+### Alternative: Prevent Name Changes
+If you want to freeze existing names permanently:
+```terraform
+resource "azurecaf_name" "db" {
+  passthrough   = true
+  name          = "existing-database-name"  # Exact current name
+}
+```
+
+### What's Improved in v4.0.0
+- Modern CAF slugs as default align with official Microsoft standards
+- Consistent naming for new projects
+- Legacy support still available via explicit opt-in
+- Clearer migration path for future slug updates
+
+### Rollback Strategy
+If issues occur after upgrading:
+1. Pin provider version to v3.1.0: `version = "~> 3.1.0"`
+2. Or add `use_legacy_slug = true` to affected resources
+3. Run `terraform plan` to verify rollback
+
 ## [v3.1.0] - 2026-03-06
 
 ### Added

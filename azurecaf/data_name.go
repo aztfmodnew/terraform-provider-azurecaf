@@ -105,8 +105,8 @@ func dataName() *schema.Resource {
 				Type:        schema.TypeBool,
 				Optional:    true,
 				ForceNew:    true,
-				Default:     true,
-				Description: "Use legacy slug for backward compatibility (default: true for v3.x, will be false in v4.0.0)",
+				Default:     false,
+				Description: "Use legacy slug for backward compatibility (default: false in v4.0.0+, set true to maintain v3.x behavior)",
 			},
 		},
 	}

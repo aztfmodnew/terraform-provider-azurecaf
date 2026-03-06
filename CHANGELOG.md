@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
 ## [Unreleased]
 
 ### Added
@@ -17,6 +18,96 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 - (placeholder)
+
+## [v4.0.0] - 2026-03-06 - MAJOR RELEASE
+
+### 🔴 BREAKING CHANGES
+- **Default Slug Behavior Changed**: `use_legacy_slug` now defaults to `false` (was `true` in v3.x)
+  - **Impact**: Resources will use modern Microsoft CAF slugs by default
+  - `azurerm_mssql_database`: Uses `sqldb` slug (was `database`)
+  - `azurerm_mssql_elasticpool`: Uses `sqlep` slug (was `elasticpool`)
+  - **Action Required**: Add `use_legacy_slug = true` to existing resource configurations to maintain current naming
+
+### Migration Path from v3.x to v4.0.0
+
+#### For Existing Deployments (Maintain Current Names)
+```terraform
+# Add to ALL existing mssql_database and mssql_elasticpool resources
+resource "azurecaf_name" "db" {
+  resource_type     = "azurerm_mssql_database"
+  name              = "mydb"
+  use_legacy_slug   = true    # ← ADD THIS to maintain "database" slug
+}
+```
+
+#### For New Deployments (Adopt Modern CAF Slugs)
+```terraform
+# Default behavior - no changes needed
+resource "azurecaf_name" "db" {
+  resource_type     = "azurerm_mssql_database"
+  name              = "mydb"
+  # use_legacy_slug = false (default) → uses "sqldb" slug
+}
+```
+
+#### Gradual Migration Strategy
+1. **Immediate**: Add `use_legacy_slug = true` to all existing resources in Terraform states
+2. **Planning**: Run `terraform plan` to confirm no unexpected changes
+3. **Selective Migration**: Remove `use_legacy_slug = true` from non-critical resources first
+4. **Validation**: Test name changes in development/staging environments
+5. **Production**: Schedule maintenance window for database renames if needed
+
+### Alternative: Prevent Name Changes
+If you want to freeze existing names permanently:
+```terraform
+resource "azurecaf_name" "db" {
+  passthrough   = true
+  name          = "existing-database-name"  # Exact current name
+}
+```
+
+### What's Improved in v4.0.0
+- Modern CAF slugs as default align with official Microsoft standards
+- Consistent naming for new projects
+- Legacy support still available via explicit opt-in
+- Clearer migration path for future slug updates
+
+### Rollback Strategy
+If issues occur after upgrading:
+1. Pin provider version to v3.1.0: `version = "~> 3.1.0"`
+2. Or add `use_legacy_slug = true` to affected resources
+3. Run `terraform plan` to verify rollback
+
+## [v3.1.0] - 2026-03-06
+
+### Added
+- **Backward Compatibility Feature**: Added `use_legacy_slug` parameter to `azurecaf_name` resource and data source
+  - Allows resources to maintain legacy slug naming from v1.x/v2.x versions
+  - `azurerm_mssql_database`: Can use legacy `database` slug instead of `sqldb`
+  - `azurerm_mssql_elasticpool`: Can use legacy `elasticpool` slug instead of `sqlep`
+  - **Default**: `use_legacy_slug = true` (maintains backward compatibility)
+  - Added `legacy_slug` field to `resourceDefinition.json` for affected resources
+
+### Changed
+- **Provider Migration Strategy**: Established deprecation path for legacy slugs
+  - v3.x: `use_legacy_slug` defaults to `true` (current)
+  - v4.0.0: `use_legacy_slug` will default to `false` (future major version)
+
+### Migration Guidance
+- **Existing Deployments**: No action required - legacy slugs remain active by default
+- **New Deployments**: Set `use_legacy_slug = false` to adopt modern CAF slugs
+- **Gradual Migration**: Can be controlled per-resource:
+  ```terraform
+  resource "azurecaf_name" "db" {
+    resource_type     = "azurerm_mssql_database"
+    use_legacy_slug   = true   # Maintains "database" slug
+  }
+  ```
+- **Preparing for v4.0.0**: Explicitly set `use_legacy_slug = true` on existing resources to ensure stability across version upgrades
+
+### Documentation
+- See migration guidance in this changelog under `v4.0.0` → `Migration Path from v3.x to v4.0.0`
+- For detailed v3.0.0 to v4.0.0 migration planning: Check CHANGELOG v4.0.0 notes
 
 ## [v3.0.0] - 2025-10-30
 

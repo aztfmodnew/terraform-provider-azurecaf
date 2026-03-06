@@ -234,6 +234,13 @@ func resourceName() *schema.Resource {
 				ForceNew: true,
 				Default:  true,
 			},
+			"use_legacy_slug": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				ForceNew:    true,
+				Default:     false,
+				Description: "Use legacy slug for backward compatibility (default: false in v4.0.0+, set true to maintain v3.x behavior)",
+			},
 		},
 	}
 }
@@ -338,8 +345,21 @@ func getResource(resourceType string) (*ResourceStructure, error) {
 }
 
 // Retrieve the resource slug / shortname based on the resourceType and the selected convention
-func getSlug(resourceType string, convention string) string {
+// If useLegacySlug is true and a legacy override exists, returns that legacy slug for backward compatibility.
+//
+// NOTE:
+// ResourceStructure currently does not expose a LegacySlug field in generated models.
+// Keep backward compatibility by handling known legacy slug transitions explicitly here.
+func getSlug(resourceType string, convention string, useLegacySlug bool) string {
 	if convention == ConventionCafClassic || convention == ConventionCafRandom {
+		if useLegacySlug {
+			if legacySlug, exists := map[string]string{
+				"azurerm_mssql_database":    "database",
+				"azurerm_mssql_elasticpool": "elasticpool",
+			}[resourceType]; exists {
+				return legacySlug
+			}
+		}
 		if val, ok := ResourceDefinitions[resourceType]; ok {
 			return val.CafPrefix
 		}
@@ -469,6 +489,7 @@ func getResourceName(resourceTypeName string, separator string,
 	cleanInput bool,
 	passthrough bool,
 	useSlug bool,
+	useLegacySlug bool,
 	namePrecedence []string) (string, error) {
 
 	resource, err := getResource(resourceTypeName)
@@ -482,7 +503,7 @@ func getResourceName(resourceTypeName string, separator string,
 
 	slug := ""
 	if useSlug {
-		slug = getSlug(resourceTypeName, convention)
+		slug = getSlug(resourceTypeName, convention, useLegacySlug)
 	}
 
 	if cleanInput {
@@ -523,6 +544,7 @@ func getNameResult(d *schema.ResourceData, meta interface{}) error {
 	cleanInput := d.Get("clean_input").(bool)
 	passthrough := d.Get("passthrough").(bool)
 	useSlug := d.Get("use_slug").(bool)
+	useLegacySlug := d.Get("use_legacy_slug").(bool)
 	randomLength := d.Get("random_length").(int)
 	randomSeed := int64(d.Get("random_seed").(int))
 
@@ -552,7 +574,7 @@ func getNameResult(d *schema.ResourceData, meta interface{}) error {
 	}
 
 	if len(resourceType) > 0 {
-		resourceName, err := getResourceName(resourceType, separator, prefixes, name, suffixes, randomSuffix, convention, cleanInput, passthrough, useSlug, namePrecedence)
+		resourceName, err := getResourceName(resourceType, separator, prefixes, name, suffixes, randomSuffix, convention, cleanInput, passthrough, useSlug, useLegacySlug, namePrecedence)
 		if err != nil {
 			return err
 		}
@@ -561,7 +583,7 @@ func getNameResult(d *schema.ResourceData, meta interface{}) error {
 	resourceNames := make(map[string]string, len(resourceTypes))
 	for _, resourceTypeName := range resourceTypes {
 		var err error
-		resourceNames[resourceTypeName], err = getResourceName(resourceTypeName, separator, prefixes, name, suffixes, randomSuffix, convention, cleanInput, passthrough, useSlug, namePrecedence)
+		resourceNames[resourceTypeName], err = getResourceName(resourceTypeName, separator, prefixes, name, suffixes, randomSuffix, convention, cleanInput, passthrough, useSlug, useLegacySlug, namePrecedence)
 		if err != nil {
 			return err
 		}

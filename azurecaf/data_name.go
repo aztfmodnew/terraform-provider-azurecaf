@@ -101,6 +101,13 @@ func dataName() *schema.Resource {
 				ForceNew: true,
 				Default:  true,
 			},
+			"use_legacy_slug": {
+				Type:        schema.TypeBool,
+				Optional:    true,
+				ForceNew:    true,
+				Default:     false,
+				Description: "Use legacy slug for backward compatibility (default: false in v4.0.0+, set true to maintain v3.x behavior)",
+			},
 		},
 	}
 }
@@ -119,6 +126,7 @@ func getNameReadResult(d *schema.ResourceData, meta interface{}) error {
 	cleanInput := d.Get("clean_input").(bool)
 	passthrough := d.Get("passthrough").(bool)
 	useSlug := d.Get("use_slug").(bool)
+	useLegacySlug := d.Get("use_legacy_slug").(bool)
 	randomLength := d.Get("random_length").(int)
 	randomSeed := int64(d.Get("random_seed").(int))
 
@@ -128,7 +136,7 @@ func getNameReadResult(d *schema.ResourceData, meta interface{}) error {
 
 	namePrecedence := []string{"name", "slug", "random", "suffixes", "prefixes"}
 
-	resourceName, err := getResourceName(resourceType, separator, prefixes, name, suffixes, randomSuffix, convention, cleanInput, passthrough, useSlug, namePrecedence)
+	resourceName, err := getResourceName(resourceType, separator, prefixes, name, suffixes, randomSuffix, convention, cleanInput, passthrough, useSlug, useLegacySlug, namePrecedence)
 	if err != nil {
 		return err
 	}

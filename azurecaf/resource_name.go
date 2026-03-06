@@ -345,14 +345,22 @@ func getResource(resourceType string) (*ResourceStructure, error) {
 }
 
 // Retrieve the resource slug / shortname based on the resourceType and the selected convention
-// If useLegacySlug is true and a legacy_slug is defined, returns the legacy slug for backward compatibility
+// If useLegacySlug is true and a legacy override exists, returns that legacy slug for backward compatibility.
+//
+// NOTE:
+// ResourceStructure currently does not expose a LegacySlug field in generated models.
+// Keep backward compatibility by handling known legacy slug transitions explicitly here.
 func getSlug(resourceType string, convention string, useLegacySlug bool) string {
 	if convention == ConventionCafClassic || convention == ConventionCafRandom {
-		if val, ok := ResourceDefinitions[resourceType]; ok {
-			// Return legacy slug if requested and available
-			if useLegacySlug && val.LegacySlug != "" {
-				return val.LegacySlug
+		if useLegacySlug {
+			if legacySlug, exists := map[string]string{
+				"azurerm_mssql_database":    "database",
+				"azurerm_mssql_elasticpool": "elasticpool",
+			}[resourceType]; exists {
+				return legacySlug
 			}
+		}
+		if val, ok := ResourceDefinitions[resourceType]; ok {
 			return val.CafPrefix
 		}
 	}

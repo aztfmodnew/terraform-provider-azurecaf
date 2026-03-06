@@ -106,7 +106,7 @@ If issues occur after upgrading:
 - **Preparing for v4.0.0**: Explicitly set `use_legacy_slug = true` on existing resources to ensure stability across version upgrades
 
 ### Documentation
-- See migration guide: `docs/migration-slug-v4.md` (to be added)
+- See migration guidance in this changelog under `v4.0.0` → `Migration Path from v3.x to v4.0.0`
 - For detailed v3.0.0 to v4.0.0 migration planning: Check CHANGELOG v4.0.0 notes
 
 ## [v3.0.0] - 2025-10-30
